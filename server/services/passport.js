@@ -19,6 +19,9 @@ passport.use(
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback',
+      // Trust the provider proxy whether it is a loadbalancer or a proxy server
+      //Otherwise https in ignore and becomes http and make the redirect_url to fail
+      proxy: true,
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ googleId: profile.id }).then((existingUser) => {
