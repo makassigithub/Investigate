@@ -13,11 +13,15 @@ module.exports = (app) => {
     //It removes the user cookie
 
     req.logout();
-    res.send(req.user);
+    res.redirect('/');
   });
 
   // When this kicks in, the code param his provided by google
-  app.get('/auth/google/callback', passport.authenticate('google'));
+  app.get(
+    '/auth/google/callback',
+    passport.authenticate('google'),
+    (req, res) => res.redirect('/surveys')
+  );
 
   app.get('/api/current_user', (req, res) => {
     console.log(req.session);
