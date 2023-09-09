@@ -20,3 +20,4 @@ export const store = configureStore({
 setupListeners(store.dispatch);
 
 export * from './apis/authApi';
+export * from './apis/surveyApi';

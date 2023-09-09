@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import { useFetchCurrentUserQuery } from '../store';
 import { setIsAuthenticated } from '../store/reducers/authReducer';
 
+import StripePayment from './stripe';
+
 import Header from './Header';
 import SurveyNew from './SurveyNew';
 import Landing from './Landing';
@@ -13,7 +15,6 @@ import Dashboard from './Dashboard';
 
 function App() {
   const { data, error, isFetching } = useFetchCurrentUserQuery();
-  console.log(data);
 
   return (
     <div className='px-5'>
@@ -24,6 +25,7 @@ function App() {
             <Route exact path='/' Component={Landing} />
             <Route exact path='/surveys' Component={Dashboard} />
             <Route path='/surveys/new' Component={SurveyNew} />
+            {/* <Route path='/payment' Component={StripePayment} /> */}
           </Routes>
         </div>
       </BrowserRouter>

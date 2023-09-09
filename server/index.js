@@ -1,5 +1,5 @@
 const app = require('express')();
-
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const keys = require('./config/keys');
@@ -12,6 +12,8 @@ mongoose
   .connect(keys.mongodbURI)
   .then(() => console.log('mongoose is connected...'));
 
+app.use(bodyParser.json());
+
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -23,6 +25,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
+require('./routes/paymentRouts')(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log('Server listening at port: 5000'));

@@ -1,10 +1,22 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const surveyApi = createApi({
   reducerPath: 'surveys',
-  endpoints(builder) {
-    return {};
+  baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
+  endpoints: (builder) => {
+    return {
+      handleStripePayment: builder.mutation({
+        query: (token) => ({
+          url: '/stripe',
+          body: {
+            token,
+          },
+          method: 'POST',
+        }),
+      }),
+    };
   },
 });
 
+export const { useHandleStripePaymentMutation } = surveyApi;
 export { surveyApi };
