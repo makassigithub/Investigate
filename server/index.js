@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'production') {
   // 1. instruct express to serve production static contents of the client from the build directory
   app.use(express.static('client/build'));
 
-  // 2. Instrcut express to send back the index.html file for any route that is that not handle
+  // 2. Instruct express to send back the index.html file for any route that is that not handle
   const path = require('path');
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
