@@ -24,6 +24,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+require('./routes/authRoutes')(app);
+require('./routes/paymentRouts')(app);
+
 if (process.env.NODE_ENV === 'production') {
   // The dev server does not exist anymore, express will serve both the back and ethe frontEnd
 
@@ -36,9 +39,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
-
-require('./routes/authRoutes')(app);
-require('./routes/paymentRouts')(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log('Server listening at port: 5000'));
