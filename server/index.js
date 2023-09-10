@@ -10,9 +10,7 @@ const app = express();
 require('./models/User');
 require('./services/passport');
 
-mongoose
-  .connect(keys.mongodbURI)
-  .then(() => console.log('mongoose is connected...'));
+mongoose.connect(keys.mongodbURI).then(() => console.log('connected to DB...'));
 
 app.use(bodyParser.json());
 
