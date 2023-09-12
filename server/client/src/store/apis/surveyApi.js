@@ -14,6 +14,15 @@ const surveyApi = createApi({
           method: 'POST',
         }),
       }),
+      createSurvey: builder.mutation({
+        query: (formObj) => ({
+          url: '/survey',
+          body: {
+            survey: formObj,
+          },
+          method: 'POST',
+        }),
+      }),
     };
   },
 });

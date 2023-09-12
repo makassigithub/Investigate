@@ -5,6 +5,9 @@ import { store } from './store';
 
 import App from './components/App';
 import './index.css';
+import axios from 'axios';
+
+window.axios = axios;
 
 const rootEl = document.querySelector('#root');
 const root = ReactDOM.createRoot(rootEl);

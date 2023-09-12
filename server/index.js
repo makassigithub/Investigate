@@ -8,6 +8,7 @@ const keys = require('./config/keys');
 const app = express();
 
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 mongoose.connect(keys.mongodbURI).then(() => console.log('connected to DB...'));
@@ -26,6 +27,7 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/paymentRouts')(app);
+require('./routes/surveyRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   // The dev server does not exist anymore, express will serve both the back and ethe frontEnd
