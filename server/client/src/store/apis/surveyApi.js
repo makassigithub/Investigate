@@ -17,9 +17,7 @@ const surveyApi = createApi({
       createSurvey: builder.mutation({
         query: (formObj) => ({
           url: '/survey',
-          body: {
-            survey: formObj,
-          },
+          body: { ...formObj },
           method: 'POST',
         }),
       }),
@@ -27,5 +25,6 @@ const surveyApi = createApi({
   },
 });
 
-export const { useHandleStripePaymentMutation } = surveyApi;
+export const { useHandleStripePaymentMutation, useCreateSurveyMutation } =
+  surveyApi;
 export { surveyApi };

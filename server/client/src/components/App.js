@@ -1,17 +1,11 @@
-import { useEffect } from 'react';
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-
 import { useFetchCurrentUserQuery } from '../store';
-import { setIsAuthenticated } from '../store/reducers/authReducer';
-
-import StripePayment from './stripe';
 
 import Header from './Header';
 import SurveyNew from './SurveyNew';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
+import SurveyVerify from './SurveyVerify';
 
 function App() {
   const { data, error, isFetching } = useFetchCurrentUserQuery();
@@ -25,6 +19,7 @@ function App() {
             <Route exact path='/' Component={Landing} />
             <Route exact path='/surveys' Component={Dashboard} />
             <Route path='/surveys/new' Component={SurveyNew} />
+            <Route path='/surveys/verify' Component={SurveyVerify} />
             {/* <Route path='/payment' Component={StripePayment} /> */}
           </Routes>
         </div>
