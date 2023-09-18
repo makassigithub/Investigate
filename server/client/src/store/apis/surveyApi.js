@@ -21,10 +21,19 @@ const surveyApi = createApi({
           method: 'POST',
         }),
       }),
+      fetchUserSurveys: builder.query({
+        query: () => ({
+          url: '/surveys',
+          method: 'GET',
+        }),
+      }),
     };
   },
 });
 
-export const { useHandleStripePaymentMutation, useCreateSurveyMutation } =
-  surveyApi;
+export const {
+  useHandleStripePaymentMutation,
+  useCreateSurveyMutation,
+  useFetchUserSurveysQuery,
+} = surveyApi;
 export { surveyApi };
